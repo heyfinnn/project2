@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Asset;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,12 @@ class AssetFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'asset_name' => $this->faker->word,
+            'asset_type' => $this->faker->randomElement(['consumable', 'tool']),
+            'description' => $this->faker->sentence,
+            'purchase_date' => $this->faker->date,
+            'last_used_date' => $this->faker->optional()->date,
+            'status' => $this->faker->randomElement(['available', 'in use', 'maintenance']),
         ];
     }
 }

@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\AssetUsage;
+use App\Models\Asset;
+use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +20,11 @@ class AssetUsageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'asset_id' => Asset::factory(),
+            'employee_id' => Employee::factory(),
+            'use_date' => $this->faker->date,
+            'return_date' => $this->faker->optional()->date,
+            'purpose' => $this->faker->sentence,
         ];
     }
 }

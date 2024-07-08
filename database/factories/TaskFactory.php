@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'task_name' => $this->faker->word,
+            'description' => $this->faker->sentence,
+            'due_date' => $this->faker->date,
+            'status' => $this->faker->randomElement(['pending', 'in progress', 'completed']),
         ];
     }
 }

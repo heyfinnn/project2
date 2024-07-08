@@ -8,6 +8,9 @@
                 <ul aria-expanded="false">
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/profile-update">Update Password</a></li>
+                    <li><a href="/profile-update">Admin</a></li>
+                    <li><a href="/profile-update">Operator</a></li>
+                    <li><a href="/profile-update">Guest</a></li>
                 </ul>
             </li>
         </ul>

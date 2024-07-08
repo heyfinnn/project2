@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\EmployeeTask;
+use App\Models\Employee;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +21,9 @@ class EmployeeTaskFactory extends Factory
     {
         return [
             //
+            'employee_id' => Employee::factory(),
+            'task_id' => Task::factory(),
+            'assigned_date' => $this->faker->date,
         ];
     }
 }

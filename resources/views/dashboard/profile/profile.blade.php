@@ -1,68 +1,69 @@
 @extends('dashboard.layouts.app')
-
-@section('title', 'Profile')
+@section('title', 'Dashboard')
 @section('content')
-<div class="row page-titles">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active"><a href="javascript:void(0)">Form</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0)">@yield('title')</a></li>
-    </ol>
-</div>
+
+<!-- row -->
+
 <div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Profile</h4>
+    <div class="col-xl-12">
+         @if ($message = Session::get('success'))
+            <div class="alert alert-primary alert-dismissible fade show">
+                <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                <strong>Welcome {{ auth()->user()->name }}</strong> {{ $message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                </button>
             </div>
-            <div class="card-body">
-                <div class="basic-form">
-                    <form class="form-valide-with-icon needs-validation" method="POST" novalidate="" action="{{ route('updatepassword') }}">
-                        @csrf
-                        <div class="mb-3">
-                            <label class="text-label form-label" for="validationCustomUsername">Username</label>
-                            <div class="input-group">
-                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                                <input type="text" class="form-control" id="validationCustomUsername" placeholder="Enter a username.." required="">
-                                <div class="invalid-feedback">
-                                    Please Enter a username.
-                                    </div>
+        @else
+            <div class="alert alert-primary alert-dismissible fade show">
+                <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                <strong>Hi {{ auth()->user()->name }}, </strong>You are logged in!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                </button>
+            </div>    
+        @endif   
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="row">
+                   
+                    <div class="col-xl-12">
+                    <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Input Style</h4>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="text-label form-label" for="dlab-password">Password *</label>
-                            <div class="input-group transparent-append">
-                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                                <input type="password" name="password" class="form-control" id="dlab-password" placeholder="Choose a safe one.." required="">
-                                <span class="input-group-text show-pass"> 
-                                    <i class="fa fa-eye-slash"></i>
-                                    <i class="fa fa-eye"></i>
-                                </span>
-                                <div class="invalid-feedback">
-                                    Please Enter a username.
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="mb-3">
-                            <label class="text-label form-label" for="dlab-password2">Password *</label>
-                            <div class="input-group transparent-append">
-                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                                <input type="password" class="form-control" id="dlab-password2" placeholder="Choose a safe one.." required="">
-                                <span class="input-group-text show-pass"> 
-                                    <i class="fa fa-eye-slash"></i>
-                                    <i class="fa fa-eye"></i>
-                                </span>
-                                <div class="invalid-feedback">
-                                    Please Enter a username.
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form methode="POST" action="/update-pasword">
+                                        <div class="mb-3">
+                                            <label for="email">E-Mail</label>
+                                            <input type="text" class="form-control input-default " value="{{ $user->email }}" placeholder="input-default">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control input-rounded" value="{{ $user->name }}" placeholder="input-rounded">
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        
-                        <button type="submit" class="btn me-2 btn-primary">Submit</button>
-                        <button type="submit" class="btn btn-light">cencel</button>
-                    </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div id="clientGrowthChart"></div>
+
+                   
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xl-6">
+            <canvas id="dailyRevenueChart"></canvas>
+            
+            </div>
+            <div class="col-xl-6">
+                <div id="monthlyRevenueChart"></div>
+               
+            </div>
+        </div>
     </div>
-</div>
+
 @endsection

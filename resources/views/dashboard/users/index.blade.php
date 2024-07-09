@@ -30,7 +30,7 @@
                         <h4 class="card-title">Users</h4>
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addUserModal3">Add User</button>
+                        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
                         <div class="table-responsive">
                             <table id="example" class="display" style="min-width: 845px" >
                                 <thead>
@@ -69,7 +69,7 @@
 
 
 <!-- Add User Modal -->
-<div class="modal fade" id="addUserModal3" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

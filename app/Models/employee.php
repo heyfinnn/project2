@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class employee extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'employee_id';
+    protected $fillable = ['first_name', 'last_name', 'position', 'department'];
+
+    public function tasks()
+    {
+        return $this->hasMany(EmployeeTask::class, 'employee_id', 'employee_id');
+    }
+
+    public function assetUsage()
+    {
+        return $this->hasMany(AssetUsage::class, 'employee_id', 'employee_id');
+    }
 }

@@ -22,20 +22,18 @@
             </div>    
         @endif   
         <div class="row">
-            <div class="col-xl-6">
+            <div class="col-xl-12">
                 <div class="row">
-                   
-                    <div class="col-xl-12">
                     <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">UPDATE PASSWORD</h4>
+                                <h4 class="card-title">USERS</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
                                     <form methode="POST" action="/update-pasword">
                                         <div class="mb-3">
                                             <label for="email">E-Mail</label>
-                                            <input type="text" class="form-control input-default " value="{{ $user->email }}" placeholder="input-default">
+                                            <input type="text" class="form-control input-default " value="{{ $user->email }} " placeholder="input-default">
                                         </div>
                                         <div class="mb-3">
                                             <input type="text" class="form-control input-rounded" value="{{ $user->name }}" placeholder="input-rounded">
@@ -43,7 +41,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

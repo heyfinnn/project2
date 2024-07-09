@@ -17,10 +17,22 @@
 	<title>{{ config('app.name') }} | @yield('title')</title>
 	
 	<!-- FAVICONS ICON -->
+    <link rel="stylesheet" href="{{ asset('fillow/css/bootstrap.min.css') }}">
 	<link rel="shortcut icon" type="image/png" href="{{ asset('themes/fillow/images/favicon.png') }}">
 	<link href="{{ asset('themes/fillow/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
 	<link href="{{ asset('themes/fillow/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('themes/fillow/vendor/nouislider/nouislider.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('fillow/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fillow/css/dataTables.bootstrap4.min.css') }}">
+	<link
+            href="{{ asset('themes/fillow/vendor/datatables/css/jquery.dataTables.min.css') }}"
+            rel="stylesheet"
+        />
+        <!-- Custom Stylesheet -->
+        <link
+            href="{{ asset('themes/fillow/vendor/jquery-nice-select/css/nice-select.css') }}"
+            rel="stylesheet"
+        />
 	
 	<!-- Style css -->
     <link href="{{ asset('themes/fillow/css/style.css') }}" rel="stylesheet">
@@ -145,7 +157,8 @@
     <script src="{{ asset('themes/fillow/vendor/global/global.min.js') }}"></script>
 	<script src="{{ asset('themes/fillow/vendor/chart.js/Chart.bundle.min.js') }}"></script>
 	<script src="{{ asset('themes/fillow/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
-	
+	<link rel="stylesheet" href="{{ asset('fillow/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fillow/css/dataTables.bootstrap4.min.css') }}">
 	<!-- Apex Chart -->
 	<script src="{{ asset('themes/fillow/vendor/apexchart/apexchart.js') }}"></script>
 	
@@ -157,7 +170,13 @@
 	<script src="{{ asset('themes/fillow/js/dashboard/dashboard-1.js') }}"></script>
 	
 	<script src="{{ asset('themes/fillow/vendor/owl-carousel/owl.carousel.js') }}"></script>
-	
+	  <!-- Datatable -->
+	  <script src="{{ asset('themes/fillow/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('themes/fillow/js/plugins-init/datatables.init.js') }}"></script>
+
+		<script src="{{ asset('fillow/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('fillow/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
     <script src="{{ asset('themes/fillow/js/custom.min.js') }}"></script>
 	<script src="{{ asset('themes/fillow/js/dlabnav-init.js') }}"></script>
 	<script src="{{ asset('themes/fillow/js/demo.js') }}"></script>
@@ -231,6 +250,6 @@
 		});
 		
 	</script>
-
+@stack('scripts')
 </body>
 </html>

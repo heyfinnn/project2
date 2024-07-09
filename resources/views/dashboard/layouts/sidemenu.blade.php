@@ -6,7 +6,12 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+            <li><a class="" href="/users" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text">User</span>
+                </a>
+            </li>
+            <!-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-user"></i>
                     <span class="nav-text">User</span>
                 </a>
@@ -16,7 +21,7 @@
                     <li><a href="/profile-update">Operator</a></li>
                     <li><a href="/profile-update">Guest</a></li>
                 </ul>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

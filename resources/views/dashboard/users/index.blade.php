@@ -9,7 +9,7 @@
          @if ($message = Session::get('success'))
             <div class="alert alert-primary alert-dismissible fade show">
                 <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
-                <strong>Welcome {{ auth()->user()->name }}</strong> {{ $message }}
+                <strong>{{ auth()->user()->name }}</strong> {{ $message }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
                 </button>
             </div>
@@ -30,7 +30,7 @@
                         <h4 class="card-title">Users</h4>
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+                        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal"> <i class="fa fa-plus"></i> Add User</button>
                         <div class="table-responsive">
                             <table id="example" class="display" style="min-width: 845px" >
                                 <thead>
@@ -50,8 +50,8 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->role }}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-primary edit-btn" data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-role="{{ $user->role }}" data-toggle="modal" data-target="#editUserModal">Edit</button>
-                                                <button class="btn btn-sm btn-danger delete-btn" data-id="{{ $user->id }}" data-toggle="modal" data-target="#deleteUserModal">Delete</button>
+                                                <button class="btn  btn-warning edit-btn" data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-role="{{ $user->role }}" data-toggle="modal" data-target="#editUserModal"> <i class="fa fa-edit"></i></button>
+                                                <button class="btn  btn-danger delete-btn" data-id="{{ $user->id }}" data-toggle="modal" data-target="#deleteUserModal"> <i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach

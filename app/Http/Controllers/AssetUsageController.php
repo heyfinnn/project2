@@ -2,65 +2,66 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\asset;
+use App\Models\employee;
 use App\Models\AssetUsage;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreAssetUsageRequest;
 use App\Http\Requests\UpdateAssetUsageRequest;
 
 class AssetUsageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $assets = Asset::all();
+        $employees = employee::all();
+        return view('dashboard.asset_usages.index', compact('assets', 'employees'));
+        // $assetUsages = AssetUsage::with(['asset', 'employee'])->get();
+        // dump($assetUsages);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function getAssetUsages()
     {
-        //
+        $assetUsages = AssetUsage::with(['asset', 'employee'])->get();
+        return response()->json($assetUsages);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreAssetUsageRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'asset_id' => 'required|exists:assets,asset_id',
+            'employee_id' => 'required|exists:employees,employee_id',
+            'use_date' => 'required|date',
+            'return_date' => 'nullable|date|after_or_equal:use_date',
+            'purpose' => 'required|string',
+        ]);
+
+        $assetUsage = AssetUsage::create($request->all());
+
+        return response()->json(['success' => 'Asset usage added successfully.']);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(AssetUsage $assetUsage)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'asset_id' => 'required|exists:assets,asset_id',
+            'employee_id' => 'required|exists:employees,employee_id',
+            'use_date' => 'required|date',
+            'return_date' => 'nullable|date|after_or_equal:use_date',
+            'purpose' => 'required|string',
+        ]);
+
+        $assetUsage = AssetUsage::findOrFail($id);
+        $assetUsage->update($request->all());
+
+        return response()->json($assetUsage);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(AssetUsage $assetUsage)
+    public function destroy($id)
     {
-        //
-    }
+        $assetUsage = AssetUsage::findOrFail($id);
+        $assetUsage->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateAssetUsageRequest $request, AssetUsage $assetUsage)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(AssetUsage $assetUsage)
-    {
-        //
+        return response()->json(['success' => 'Asset usage deleted successfully.']);
     }
 }

@@ -11,17 +11,15 @@
                     <span class="nav-text">User</span>
                 </a>
             </li>
-            <!-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-                    <i class="fas fa-user"></i>
-                    <span class="nav-text">User</span>
+            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                    <i class="fas fa-truck"></i>
+                    <span class="nav-text">Assets</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="/profile">Update Password</a></li>
+                    <li><a href="/asset">Asset view</a></li>
                     <li><a href="/profile-update">Admin</a></li>
-                    <li><a href="/profile-update">Operator</a></li>
-                    <li><a href="/profile-update">Guest</a></li>
                 </ul>
-            </li> -->
+            </li>
         </ul>
     </div>
 </div>

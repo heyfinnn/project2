@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\asset;
+use App\Models\AssetUsage;
+use App\Models\TaskAsset;
 use App\Http\Requests\StoreassetRequest;
 use App\Http\Requests\UpdateassetRequest;
 
@@ -14,6 +16,8 @@ class AssetController extends Controller
     public function index()
     {
         //
+        $assets = asset::all();
+        return view('dashboard.asset.index', compact('assets'));
     }
 
     /**
@@ -22,6 +26,7 @@ class AssetController extends Controller
     public function create()
     {
         //
+        return view('dashboard.asset.create');
     }
 
     /**
@@ -38,6 +43,7 @@ class AssetController extends Controller
     public function show(asset $asset)
     {
         //
+        return view('dashboard.asset.show', compact('user'));
     }
 
     /**
@@ -46,6 +52,7 @@ class AssetController extends Controller
     public function edit(asset $asset)
     {
         //
+        return view('dashboard.asset.edit', compact('user'));
     }
 
     /**
@@ -62,5 +69,15 @@ class AssetController extends Controller
     public function destroy(asset $asset)
     {
         //
+        $cek = AssetUsage::where('asset_id', '=', $asset->asset_id)->count();
+        $cek2 = TaskAsset::where('asset_id', '=', $asset->asset_id)->count();
+        if($cek == 0 && $cek2 == 0){
+            $asset->delete();
+            return redirect()->route('asset.index')->with('success', 'Assets deleted successfully.');
+        }else{
+            return redirect()->route('asset.index')->with('danger', 'Gagal Menghapus barang masih di gunakan.');
+        }
+        
     }
+    
 }

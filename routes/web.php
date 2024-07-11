@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\epep;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AssetUsageController;
 
@@ -22,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('asset', AssetController::class);
     Route::resource('asset_usages', AssetUsageController::class);
     Route::get('get-asset-usages', [AssetUsageController::class, 'getAssetUsages'])->name('asset_usages.getAssetUsages');
+    // Route::get('/loadapp', function(){return view('dashboard/layouts/app');});
     // Route::get('get-users', [UserController::class, 'getUsers'])->name('users.getUsers');
 });
 

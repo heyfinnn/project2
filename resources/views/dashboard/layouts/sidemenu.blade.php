@@ -17,7 +17,8 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="/asset">Asset view</a></li>
-                    <li><a href="/profile-update">Admin</a></li>
+                    <li><a href="/asset_usages">Asset usages</a></li>
+                    <li><a href="/epep">epep</a></li>
                 </ul>
             </li>
         </ul>

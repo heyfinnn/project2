@@ -21,6 +21,11 @@
                     <li><a href="/epep">epep</a></li>
                 </ul>
             </li>
+            <li><a class="" href="/users" aria-expanded="false">
+                <i class="fas fa-user"></i>
+                <span class="nav-text">Static</span>
+            </a>
+            </li>
         </ul>
     </div>
 </div>

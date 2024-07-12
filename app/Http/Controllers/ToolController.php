@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TaskAsset;
-use App\Http\Requests\StoreTaskAssetRequest;
-use App\Http\Requests\UpdateTaskAssetRequest;
+use App\Models\Tool;
+use App\Http\Requests\StoreToolRequest;
+use App\Http\Requests\UpdateToolRequest;
 
-class TaskAssetController extends Controller
+class ToolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class TaskAssetController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTaskAssetRequest $request)
+    public function store(StoreToolRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class TaskAssetController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TaskAsset $taskAsset)
+    public function show(Tool $tool)
     {
         //
     }
@@ -43,7 +43,7 @@ class TaskAssetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskAsset $taskAsset)
+    public function edit(Tool $tool)
     {
         //
     }
@@ -51,7 +51,7 @@ class TaskAssetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskAssetRequest $request, TaskAsset $taskAsset)
+    public function update(UpdateToolRequest $request, Tool $tool)
     {
         //
     }
@@ -59,7 +59,7 @@ class TaskAssetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskAsset $taskAsset)
+    public function destroy(Tool $tool)
     {
         //
     }

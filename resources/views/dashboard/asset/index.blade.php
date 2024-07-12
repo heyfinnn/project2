@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('title', 'Manage Users')
+@section('title', 'Manage Assets')
 @section('content')
 
 <!-- row -->
@@ -34,7 +34,7 @@
             <!--  -->
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Users</h4>
+                        <h4 class="card-title">@yield('title')</h4>
                     </div>
                     <div class="card-body">
                         <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal"> <i class="fa fa-plus"></i> Add </button>

@@ -1,0 +1,40 @@
+Tabel 1: assets
+asset_id (INT, PRIMARY KEY, AUTO_INCREMENT)
+asset_name (VARCHAR)
+description (TEXT)
+stock (INT)
+purchase_date (DATE)
+last_used_date (DATE)
+location (TEXT)
+status (ENUM: 'available', 'in use', 'maintenance')
+
+Tabel 2: tools
+tool_id (INT, PRIMARY KEY, AUTO_INCREMENT)
+tool_name (VARCHAR)
+description (TEXT)
+purchase_date (DATE)
+last_used_date (DATE)
+status (ENUM: 'available', 'in use', 'maintenance')
+
+Tabel 3: employees
+employee_id (INT, PRIMARY KEY, AUTO_INCREMENT)
+first_name (VARCHAR)
+last_name (VARCHAR)
+position (VARCHAR)
+department (VARCHAR)
+
+Tabel 4: tasks
+task_id (INT, PRIMARY KEY, AUTO_INCREMENT)
+task_name (VARCHAR)
+description (TEXT)
+due_date (DATE)
+location (TEXT)
+status (ENUM: 'pending', 'in progress', 'completed')
+
+Tabel 5: employee_tasks
+employee_task_id (INT, PRIMARY KEY, AUTO_INCREMENT)
+employee_id (INT, FOREIGN KEY to employees(employee_id))
+task_id (INT, FOREIGN KEY to tasks(task_id))
+asset_id (INT, FOREIGN KEY to assets(asset_id)) nullable
+tool_id (INT, FOREIGN KEY to assets(tool_id)) nullable
+assigned_date (DATE)

@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\EmployeeTask;
+use App\Models\Asset;
 use App\Models\Employee;
 use App\Models\Task;
+use App\Models\Tool;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,9 +22,11 @@ class EmployeeTaskFactory extends Factory
     {
         return [
             //
-            'employee_id' => Employee::factory(),
-            'task_id' => Task::factory(),
-            'assigned_date' => $this->faker->date,
+            'employee_id' => \App\Models\Employee::factory(),
+            'task_id' => \App\Models\Task::factory(),
+            'asset_id' => \App\Models\Asset::factory(),
+            'tool_id' => \App\Models\Tool::factory(),
+            'assigned_date' => $this->faker->date(),
         ];
     }
 }

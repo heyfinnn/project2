@@ -18,9 +18,8 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             AssetSeeder::class,
             TaskSeeder::class,
+            ToolSeeder::class,
             EmployeeTaskSeeder::class,
-            TaskAssetSeeder::class,
-            AssetUsageSeeder::class,
         ]);
 
         // User::factory()->create([

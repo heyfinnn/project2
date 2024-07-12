@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class task extends Model
+class Tool extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'task_id';
+    protected $primaryKey = 'tool_id';
 
     protected $fillable = [
-        'task_name',
+        'tool_name',
         'description',
-        'due_date',
-        'location',
+        'purchase_date',
+        'last_used_date',
         'status',
     ];
 
     public function employeeTasks()
     {
-        return $this->hasMany(EmployeeTask::class, 'task_id');
+        return $this->hasMany(EmployeeTask::class, 'tool_id');
     }
 }

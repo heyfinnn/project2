@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\employee;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreemployeeRequest;
 use App\Http\Requests\UpdateemployeeRequest;
 
@@ -13,23 +14,33 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.employees.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function getEmployees()
     {
-        //
+        $employees = employee::all();
+        return response()->json($employees);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreemployeeRequest $request)
+    public function store(Request $request)
     {
-        //
+        $employee = Employee::create($request->all());
+        return response()->json($employee);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $employee = Employee::findOrFail($id);
+        $employee->update($request->all());
+        return response()->json($employee);
+    }
+
+    public function destroy($id)
+    {
+        $employee = Employee::findOrFail($id);
+        $employee->delete();
+        return response()->json('Employee deleted successfully');
     }
 
     /**
@@ -48,19 +59,4 @@ class EmployeeController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateemployeeRequest $request, employee $employee)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(employee $employee)
-    {
-        //
-    }
 }

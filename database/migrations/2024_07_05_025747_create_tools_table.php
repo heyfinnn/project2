@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assets', function (Blueprint $table) {
-            $table->id('asset_id');
-            $table->string('asset_name');
+        Schema::create('tools', function (Blueprint $table) {
+            $table->id('tool_id');
+            $table->string('tool_name');
             $table->text('description')->nullable();
-            $table->integer('stock')->default(0);
             $table->date('purchase_date');
             $table->date('last_used_date')->nullable();
-            $table->text('location')->nullable();
             $table->enum('status', ['available', 'in use', 'maintenance']);
             $table->timestamps();
         });
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assets');
+        Schema::dropIfExists('tools');
     }
 };

@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\epep;
 use App\Http\Controllers\AssetController;
-use App\Http\Controllers\AssetUsageController;
+use App\Http\Controllers\ToolController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\TaskController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,10 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('users', UserController::class);
     Route::resource('asset', AssetController::class);
-    Route::resource('asset_usages', AssetUsageController::class);
-    Route::get('get-asset-usages', [AssetUsageController::class, 'getAssetUsages'])->name('asset_usages.getAssetUsages');
-    // Route::get('/loadapp', function(){return view('dashboard/layouts/app');});
-    // Route::get('get-users', [UserController::class, 'getUsers'])->name('users.getUsers');
+    Route::resource('employees', EmployeeController::class);
+    Route::get('getEmployees', [EmployeeController::class, 'getEmployees'])->name('employees.getEmployees');
+    Route::resource('tasks', TaskController::class);
+    Route::get('getTasks', [TaskController::class, 'getTasks'])->name('tasks.getTasks');
 });
 
 require __DIR__.'/auth.php';

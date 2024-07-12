@@ -10,10 +10,19 @@ class asset extends Model
     use HasFactory;
 
     protected $primaryKey = 'asset_id';
-    protected $fillable = ['asset_name', 'asset_type', 'description', 'purchase_date', 'last_used_date', 'status'];
 
-    public function usage()
+    protected $fillable = [
+        'asset_name',
+        'description',
+        'stock',
+        'purchase_date',
+        'last_used_date',
+        'location',
+        'status',
+    ];
+
+    public function employeeTasks()
     {
-        return $this->hasMany(AssetUsage::class, 'asset_id', 'asset_id');
+        return $this->hasMany(EmployeeTask::class, 'asset_id');
     }
 }

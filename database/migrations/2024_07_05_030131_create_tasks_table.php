@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('task_name');
             $table->text('description')->nullable();
             $table->date('due_date');
+            $table->text('location')->nullable();
             $table->enum('status', ['pending', 'in progress', 'completed']);
             $table->timestamps();
         });

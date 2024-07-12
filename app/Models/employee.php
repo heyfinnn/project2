@@ -10,15 +10,16 @@ class employee extends Model
     use HasFactory;
 
     protected $primaryKey = 'employee_id';
-    protected $fillable = ['first_name', 'last_name', 'position', 'department'];
 
-    public function tasks()
-    {
-        return $this->hasMany(EmployeeTask::class, 'employee_id', 'employee_id');
-    }
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'position',
+        'department',
+    ];
 
-    public function assetUsage()
+    public function employeeTasks()
     {
-        return $this->hasMany(AssetUsage::class, 'employee_id', 'employee_id');
+        return $this->hasMany(EmployeeTask::class, 'employee_id');
     }
 }

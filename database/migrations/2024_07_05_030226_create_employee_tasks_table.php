@@ -13,10 +13,17 @@ return new class extends Migration
     {
         Schema::create('employee_tasks', function (Blueprint $table) {
             $table->id('employee_task_id');
-            $table->foreignId('employee_id')->constrained('employees', 'employee_id');
-            $table->foreignId('task_id')->constrained('tasks', 'task_id');
+            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('task_id');
+            $table->unsignedBigInteger('asset_id')->nullable();
+            $table->unsignedBigInteger('tool_id')->nullable();
             $table->date('assigned_date');
             $table->timestamps();
+
+            $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('cascade');
+            $table->foreign('task_id')->references('task_id')->on('tasks')->onDelete('cascade');
+            $table->foreign('asset_id')->references('asset_id')->on('assets')->onDelete('set null');
+            $table->foreign('tool_id')->references('tool_id')->on('tools')->onDelete('set null');
         });
     }
 

@@ -1,19 +1,26 @@
 @extends('dashboard.layouts.app')
-@section('title', 'Manage Users')
+@section('title', 'Manage Asset usage')
 @section('content')
 
 <!-- row -->
 
 <div class="row">
     <div class="col-xl-12">
-         @if ($message = Session::get('success'))
-            <div class="alert alert-primary alert-dismissible fade show">
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible fade show">
                 <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
                 <strong>{{ auth()->user()->name }}</strong> {{ $message }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
                 </button>
             </div>
-        @else
+            @elseif ($message = Session::get('danger'))
+            <div class="alert alert-danger alert-dismissible fade show">
+                <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                <strong>{{ auth()->user()->name }}</strong> {{ $message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                </button>
+            </div>
+             @else
             <div class="alert alert-primary alert-dismissible fade show">
                 <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
                 <strong>Hi {{ auth()->user()->name }}, </strong>kamu berhasil login!
@@ -23,14 +30,13 @@
         @endif   
         <div class="row">
             <div class="col-xl-12">
-                
             <!--  -->
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Users</h4>
+                        <h4 class="card-title">@yield('title')</h4>
                     </div>
                     <div class="card-body">
-                    <button class="btn btn-primary mb-3 add-btn" data-toggle="modal" data-target="#addAssetUsageModal">Add Asset Usage</button>
+                        <button class="btn btn-primary mb-3 add-btn" data-toggle="modal" data-target="#addAssetUsageModal">Add Asset Usage</button>
                         <table id="assetUsagesTable" >
                             <thead>
                                 <tr>
@@ -49,7 +55,6 @@
                     </div>
                 </div>
             <!--  -->
-
             </div>
         </div>  
     </div>

@@ -3,64 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Models\task;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoretaskRequest;
 use App\Http\Requests\UpdatetaskRequest;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return view('dashboard.tasks.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function getTasks()
     {
-        //
+        $tasks = Task::all();
+        return response()->json($tasks);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoretaskRequest $request)
+    public function store(Request $request)
     {
-        //
+        $task = Task::create($request->all());
+        return response()->json($task);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(task $task)
+    public function update(Request $request, $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->update($request->all());
+        return response()->json($task);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(task $task)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatetaskRequest $request, task $task)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(task $task)
-    {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+        return response()->json('Task deleted successfully');
     }
 }

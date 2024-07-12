@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Asset;
+use App\Models\Tool;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\asset>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tool>
  */
-class AssetFactory extends Factory
+class ToolFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,12 +18,11 @@ class AssetFactory extends Factory
     public function definition(): array
     {
         return [
-            'asset_name' => $this->faker->word,
+            //
+            'tool_name' => $this->faker->word,
             'description' => $this->faker->paragraph,
-            'stock' => $this->faker->numberBetween(0, 100),
             'purchase_date' => $this->faker->date(),
             'last_used_date' => $this->faker->date(),
-            'location' => $this->faker->address,
             'status' => $this->faker->randomElement(['available', 'in use', 'maintenance']),
         ];
     }

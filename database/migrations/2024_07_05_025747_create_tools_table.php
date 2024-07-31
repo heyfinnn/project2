@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tools', function (Blueprint $table) {
-            $table->id('tool_id');
+            $table->increments('tool_id');
             $table->string('tool_name');
-            $table->text('description')->nullable();
+            $table->text('description');
             $table->date('purchase_date');
             $table->date('last_used_date')->nullable();
             $table->enum('status', ['available', 'in use', 'maintenance']);

@@ -35,6 +35,22 @@ Tabel 5: employee_tasks
 employee_task_id (INT, PRIMARY KEY, AUTO_INCREMENT)
 employee_id (INT, FOREIGN KEY to employees(employee_id))
 task_id (INT, FOREIGN KEY to tasks(task_id))
-asset_id (INT, FOREIGN KEY to assets(asset_id)) nullable
-tool_id (INT, FOREIGN KEY to assets(tool_id)) nullable
+information(TEXT)
 assigned_date (DATE)
+
+Tabel 6: asset_tasks
+asset_tasks_id (INT, PRIMARY KEY, AUTO_INCREMENT)
+task_id (INT, FOREIGN KEY to tasks(task_id))
+asset_id (INT, FOREIGN KEY to assets(asset_id))
+value(INT)
+assigned_date (DATE)
+
+Tabel 7: tool_tasks
+tool_tasks_id (INT, PRIMARY KEY, AUTO_INCREMENT)
+task_id (INT, FOREIGN KEY to tasks(task_id))
+tool_id (INT, FOREIGN KEY to assets(tool_id))
+take_date(DATE)
+return_date(DATE)
+assigned_date (DATE)
+
+

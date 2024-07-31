@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('assets', function (Blueprint $table) {
-            $table->id('asset_id');
+            $table->increments('asset_id');
             $table->string('asset_name');
-            $table->text('description')->nullable();
-            $table->integer('stock')->default(0);
+            $table->text('description');
+            $table->integer('stock');
             $table->date('purchase_date');
             $table->date('last_used_date')->nullable();
-            $table->text('location')->nullable();
+            $table->text('location');
             $table->enum('status', ['available', 'in use', 'maintenance']);
             $table->timestamps();
         });

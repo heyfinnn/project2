@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employee_tasks', function (Blueprint $table) {
-            $table->increments('employee_task_id');
-            $table->unsignedInteger('employee_id');
+        Schema::create('tool_tasks', function (Blueprint $table) {
+            $table->increments('tool_tasks_id');
             $table->unsignedInteger('task_id');
-            $table->text('information');
+            $table->unsignedInteger('tool_id');
+            $table->date('take_date');
+            $table->date('return_date')->nullable();
             $table->date('assigned_date');
             $table->timestamps();
 
-            $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('cascade');
             $table->foreign('task_id')->references('task_id')->on('tasks')->onDelete('cascade');
+            $table->foreign('tool_id')->references('tool_id')->on('tools')->onDelete('cascade');
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employee_tasks');
+        Schema::dropIfExists('tool_tasks');
     }
 };
